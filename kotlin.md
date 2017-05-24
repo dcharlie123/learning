@@ -1,0 +1,2 @@
+[kotlin视频教程](https://github.com/enbandari/Kotlin-Tutorials)
+[kotlin中文文档](https://huanglizhuo.gitbooks.io/kotlin-in-chinese/content/GettingStarted/Basic-Syntax.html)
