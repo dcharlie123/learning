@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>three.js webgl - particles - billboards</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            background-color: #000000;
+            margin: 0px;
+            overflow: hidden;
+            font-family: Monospace;
+            font-size: 13px;
+            text-align: center;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        a {
+            color: #0078ff;
+        }
+
+        #info {
+            color: #fff;
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            padding: 5px;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./build/three.js"></script>
+
+    <script src="./examples/js/Detector.js"></script>
+    <script src="./examples/js/libs/stats.min.js"></script>
+    <script src="./examples/js/libs/tween.min.js"></script>
+    <script>
+        if (!Detector.webgl) Detector.addGetWebGLMessage();
+        var flag = false; //是否开始变换
+        var container, stats;
+        var camera, scene, renderer, particles, geometry, material, glist = []; // glist 点阵数组
+        var around, aroundMaterial, aroundPoints; // 环境点组
+        var mouseX = 0,
+            mouseY = 0;
+        var windowHalfX = window.innerWidth / 2;
+        var windowHalfY = window.innerHeight / 2;
+        var objIndex = 0; // 当前点阵模型index
+        init();
+        animate();
+
+        function init() {
+            // renderer 的承载容器
+            container = document.createElement('div');
+            document.body.appendChild(container);
+            // 初始化相机
+            camera = new THREE.PerspectiveCamera(105, window.innerWidth / window.innerHeight, 10, 10000);
+            camera.position.z = 100;
+            // 初始化场景
+            scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0x000000, 0.001); // 雾化
+            //初始化renderer
+            renderer = new THREE.WebGLRenderer();
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+            geometry = new THREE.Geometry();
+            // 初始化贴图
+            var textureLoader = new THREE.TextureLoader();
+            textureLoader.crossOrigin = '';
+            var mapDot = textureLoader.load('http://game.gtimg.cn/images/up/act/a20170301pre/images/three/gradient.png'); // 圆点
+            material = new THREE.PointsMaterial({
+                size: 4,
+                sizeAttenuation: true,
+                color: 0xffffff,
+                transparent: true,
+                opacity: 1,
+                map: mapDot
+            });
+            material.vertexColors = THREE.VertexColors;
+            var loader = new THREE.JSONLoader();
+            loader.load('http://game.gtimg.cn/images/up/act/a20170301pre/js/obj/cpac5.json', function (geo, materials) {
+                console.log(geo)
+                var colors = [];
+                for (var i = 0; i < geo.vertices.length; i++) {
+                    colors.push(new THREE.Color("rgb(255, 255, 255)"))
+                }
+                geo.colors = colors;
+                geo.center();
+                geo.normalize();
+
+                geo.scale(500, 500, 500)
+                geo.rotateX(Math.PI / 4)
+                geo.rotateY(-Math.PI / 8)
+                geometry = geo;
+
+                particles = new THREE.Points(geo, material);
+                scene.add(particles);
+            })
+            //添加状态监控面板
+            stats = new Stats();
+            container.appendChild(stats.dom);
+
+            //事件监听
+            document.addEventListener('mousedown', onDocumentMouseDown, false);
+            document.addEventListener("mousewheel", onDocumentMouseWheel, false);
+            document.addEventListener("DOMMouseScroll", onDocumentMouseWheel, false);
+            // document.addEventListener("keydown", onDocumentKeyDown, false);
+            window.addEventListener('resize', onWindowResize, false);
+
+        }
+
+        function onDocumentMouseWheel(e) {
+            var ev = e || window.event;
+            var dir = ev.wheelDelta || ev.detail;
+            if (ev.preventDefault) {
+                ev.preventDefault()
+            } else {
+                ev.returnValue = false
+            }
+            camera.position.z += dir;
+        }
+
+        function onWindowResize() {
+            windowHalfX = window.innerWidth / 2;
+            windowHalfY = window.innerHeight / 2;
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+        }
+
+        function onDocumentMouseDown(event) {
+            event.preventDefault();
+            document.addEventListener('mousemove', onDocumentMouseMove, false);
+            document.addEventListener('mouseup', onDocumentMouseUp, false);
+            document.addEventListener('mouseout', onDocumentMouseOut, false);
+
+            mouseX = event.pageX;
+            mouseY = event.pageY;
+
+        }
+
+        function onDocumentMouseMove(event) {
+            geometry.rotateY((event.pageX - mouseX) / 1000 * 2 * Math.PI);
+            geometry.rotateX((event.pageY - mouseY) / 500 * 2 * Math.PI);
+
+            event.preventDefault();
+            mouseX = event.pageX;
+            mouseY = event.pageY;
+        }
+
+        function onDocumentMouseUp(event) { //释放鼠标键  
+
+            document.removeEventListener('mousemove', onDocumentMouseMove, false);
+            document.removeEventListener('mouseup', onDocumentMouseUp, false);
+            document.removeEventListener('mouseout', onDocumentMouseOut, false);
+        }
+
+        function onDocumentMouseOut(event) { //移走鼠标  
+
+            document.removeEventListener('mousemove', onDocumentMouseMove, false);
+            document.removeEventListener('mouseup', onDocumentMouseUp, false);
+            document.removeEventListener('mouseout', onDocumentMouseOut, false);
+        }
+
+
+        function animate(time) {
+            requestAnimationFrame(animate);
+            render();
+            stats.update();
+        }
+
+        function render() {
+            geometry.rotateY(Math.PI / 200)
+            // TWEEN.update();
+            camera.lookAt(scene.position);
+            geometry.colors.forEach(function (color) {
+                color.setRGB(Math.random() * 1, Math.random() * 1, Math.random() * 1);
+            });
+            // geometry.verticesNeedUpdate = true;
+            // geometry.colorsNeedUpdate = true;
+            renderer.render(scene, camera);
+
+        }
+    </script>
+</body>
+
+</html>
