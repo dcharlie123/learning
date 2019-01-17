@@ -52,41 +52,59 @@ three.js 的坐标系符合右手定则。
 `scene.add(XXX)//XXX是物体，threejs里面可以创建很多中形状的物体`
 ##### 把整个场景放入页面
 例如：`document.getElementById('container').appendChild(renderer.domElement);`
-##### 简单例子（一个正方体）
+##### 以上是最基本的
+##### 点：`var point1 = new THREE.Vecotr3(4,8,9);`也可以`var point1 = new THREE.Vector3();point1.set(4,8,9);`
+##### 线:
 ```javascript
-  //创建场景
-  let scene = new THREE.Scene();
-  //创建相机
-  let camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-  //设置相机位置
-  camera.position.set(0, 0, 10);
-  //创建渲染器
-  var renderer = new THREE.WebGLRenderer();
-  //设置渲染器大小及像素比
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  //添加到页面
-  container = document.createElement('div');
-  document.body.appendChild(container);
-  container.appendChild(renderer.domElement);
-  //创建一个立方体1*1*1
-  let cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
-  //材质
-  let cubeMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff0000,
-    aoMapIntensity:0.5
-    // wireframe:true
-    // lights:true
-  });
-  //把形状和材质结合起来
-  let cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-  //旋转
-  cube.rotation.x=10;
-  cube.rotation.y=10;
-  //把正方体添加到场景中并渲染
-  scene.add(cube);
-  renderer.render(scene, camera);
+var geometry = new THREE.Geometry();
+var material = new THREE.LineBasicMaterial( { vertexColors: true } );
+var color1 = new THREE.Color( 0x444444 ), color2 = new THREE.Color( 0xFF0000 );
+
+// 线的材质可以由2点的颜色决定
+var p1 = new THREE.Vector3( -100, 0, 100 );
+var p2 = new THREE.Vector3(  100, 0, -100 );
+geometry.vertices.push(p1);
+geometry.vertices.push(p2);
+geometry.colors.push( color1, color2 );
+
+var line = new THREE.Line( geometry, material, THREE.LinePieces );
 ```
+##### 正方形
+```javascript
+//创建场景
+let scene = new THREE.Scene();
+//创建相机
+let camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+//设置相机位置
+camera.position.set(0, 0, 10);
+//创建渲染器
+var renderer = new THREE.WebGLRenderer();
+//设置渲染器大小及像素比
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+//添加到页面
+container = document.createElement('div');
+document.body.appendChild(container);
+container.appendChild(renderer.domElement);
+//创建一个立方体1*1*1
+let cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+//材质
+let cubeMaterial = new THREE.MeshBasicMaterial({
+  color: 0xff0000,
+  aoMapIntensity:0.5
+  // wireframe:true
+  // lights:true
+});
+//把形状和材质结合起来
+let cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+//旋转
+cube.rotation.x=10;
+cube.rotation.y=10;
+//把正方体添加到场景中并渲染
+scene.add(cube);
+renderer.render(scene, camera);
+```
+
 ##### 另外：
 - 添加模型，添加JSON还是比较方便。。。可是three升级把这个方法删了？？？
 例：
