@@ -38,7 +38,7 @@ scene.add( camera );
 这个例子将浏览器窗口的宽度和高度作为了视景体的高度和宽度，相机正好在窗口的中心点上。这也是我们一般的设置方法，基本上为了方便，我们不会设置其他的值。
 </blockquote>
 
-- 透视投影相机就是由近及远看到越来越小，`近大远小的效果`,`new PerspectiveCamera( fov, aspect, near, far )`
+- 透视投影相机`就是远处的物体比近处的物体小，远大近小,`new PerspectiveCamera( fov, aspect, near, far )`
    - fov角度，aspect宽高比，
    - <blockquote>近平面near：这个呢，表示你近处的裁面的距离。补充一下，也可以认为是眼睛距离近处的距离，假设为10米远，请不要设置为负值，Three.js就        傻了,不知道怎么算了,3、远平面far：这个呢，表示你远处的裁面</blockquote>
 ##### 坐标系
