@@ -340,3 +340,4 @@ function mousewheel(obj, upfun, downfun) {
 
 </html>
 ```
+[[翻译] tween.js 中文使用指南](https://github.com/zhaoqize/blog/issues/10)
