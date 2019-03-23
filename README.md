@@ -9,8 +9,27 @@
 - kotlin
 ### 3-20
 http:http://www.52im.net/thread-1095-1-1.html
+
 ### 3-21
-前端缓存：在从 memory cache 获取缓存内容时，浏览器会忽视例如 max-age=0, no-cache 等头部配置。如果不想让浏览器从memory cache中获取缓存，那就需要使用 no-store。
+#### 前端缓存：https://mp.weixin.qq.com/s/cUqkG3NETmJbglDXfSf0tg
+按缓存位置分类:
+- Service Worker
+- Memory Cache
+- Disk Cache
+- 网络请求
+
+1. **在从 memory cache 获取缓存内容时，浏览器会忽视例如 max-age=0, no-cache 等头部配置。如果不想让浏览器从memory cache中获取缓存，那就需要使用 no-store。**
+2. **根据 HTTP 头部的相关字段(Cache-control, Pragma 等)决定是否存入 disk cache**
+3. **memory cache 是浏览器为了加快读取缓存速度而进行的自身的优化行为，不受开发者控制，也不受 HTTP 协议头的约束，算是一个黑盒。**
+4. no-cache 从语义上表示下次请求不要直接使用缓存而需要比对，并不对本次请求进行限制。
+>>> 浏览器的行为
+
+所谓浏览器的行为，指的就是用户在浏览器如何操作时，会触发怎样的缓存策略。主要有 3 种：
+
+打开网页，地址栏输入地址： 查找 disk cache 中是否有匹配。如有则使用；如没有则发送网络请求。
+普通刷新 (F5)：因为 TAB 并没有关闭，因此 memory cache 是可用的，会被优先使用(如果匹配的话)。其次才是 disk cache。
+强制刷新 (Ctrl + F5)：浏览器不使用缓存，因此发送的请求头部均带有 Cache-control: no-cache(为了兼容，还带了 Pragma: no-cache)。服务器直接返回 200 和最新内容。
+
 ### 3-23
 前端移动端调试:https://juejin.im/entry/5c947f85f265da612d633e95
 
