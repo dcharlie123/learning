@@ -85,3 +85,14 @@ function currying(fn){
   - inherit	规定应该从父元素继承 direction 属性的值。
 
 - 小程序wxs：可以用于编写wxml过滤器
+
+- new的模拟实现
+```javascript
+function create(){
+  var obj=new Object();
+  Con=[].shift.call(arguments);//取出第一个，获得构造函数
+  obj.__proto__=Con.prototype;
+  var ret=Con.apply(pbj,arguments);
+  return typeof ret === 'object'?ret:obj;//如果返回的是对象优先返回构造函数返回的对象
+}
+```
