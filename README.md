@@ -11,7 +11,7 @@
 http:http://www.52im.net/thread-1095-1-1.html
 
 ### 3-21
-#### 前端缓存：https://mp.weixin.qq.com/s/cUqkG3NETmJbglDXfSf0tg
+#### 前端缓存：https://mp.weixin.qq.com/s/cUqkG3NETmJbglDXfSf0tg,https://mp.weixin.qq.com/s/y-yajw1GaWLKUdOJo3cbew
 按缓存位置分类:
 - Service Worker
 - Memory Cache
@@ -58,3 +58,25 @@ spy-debugger initCA
 第二步：安装证书：
 把node-mitmproxy文件夹下的 node-mitmproxy.ca.crt 传到手机上，点击安装即可。
 Spy-debugger启动界面，同样，在手机端刷新页面之后，targets中会有记录
+
+### 3-31
+- 理解闭包
+一种柯里化的方法：
+```javascript
+function currying(fn){
+  let max_length=fn.length,args_arr=[];
+  let closure=function(...args){
+    args_arr=args_arr.concat(args);
+    if(args_arr.length<max_length) return closure;//如果传入参数还未达到要求进行返回
+    return fn(...args_arr);
+  }
+  return closure
+} 
+```
+
+- 对称布局：direction:ltr
+  - ltr	默认。文本方向从左到右。
+  - rtl	文本方向从右到左。
+  - inherit	规定应该从父元素继承 direction 属性的值。
+
+- 小程序wxs：可以用于编写wxml过滤器
