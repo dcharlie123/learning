@@ -96,3 +96,7 @@ function create(){
   return typeof ret === 'object'?ret:obj;//如果返回的是对象优先返回构造函数返回的对象
 }
 ```
+## 4-2
+ - 窗体的滚动高度获取:var winScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+ - 浏览器窗体高度获取:var winHeight = window.innerHeight || document.documentElement.clientHeight;
+ 
