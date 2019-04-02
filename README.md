@@ -99,4 +99,15 @@ function create(){
 ## 4-2
  - 窗体的滚动高度获取:var winScrollTop = window.pageYOffset || document.documentElement.scrollTop;
  - 浏览器窗体高度获取:var winHeight = window.innerHeight || document.documentElement.clientHeight;
- 
+ - 小程序长列表setData优化
+```
+onReachBottom(){
+  let index=this.data.listData.length;
+  let newData={};
+  [11,12,13,14,15,16].forEach((item)=>{
+    newData['listData['+(index++)+']']=item;
+  })
+  console.log(newData);
+  this.setData(newData)
+}
+```
