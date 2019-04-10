@@ -111,3 +111,34 @@ onReachBottom(){
   this.setData(newData)
 }
 ```
+## 4-1
+- 原生ajax
+```javascript
+var xhr=new XMLHttpRequest();
+xhr.open('post','www.xxx.com',true);
+xhr.onreadystatechange=function(){
+  if(xhr.readyState===4){
+    if(xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+        console.log(xhr.responseText);
+    }
+  }
+}
+postData={"name1":"xxx","name2":"yyy"};
+postData=(function(value){
+    var dataString = "";
+    for(var key in value){
+       dataString += key+"="+value[key]+"&";
+    };
+    return dataString;
+}(postData));
+// 设置请求头
+xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+// 异常处理
+xhr.onerror = function() {
+   console.log('Network request failed')
+}
+// 跨域携带 cookie
+xhr.withCredentials = true;
+// 发出请求
+xhr.send(postData);
+```
