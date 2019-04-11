@@ -145,3 +145,6 @@ xhr.send(postData);
 - withCredentials
 
 ajax请求默认会携带同源请求的cookie，而跨域请求则不会携带cookie，设置xhr的withCredentials的属性为true将允许携带跨域cookie。
+
+## 4-11
+- [defer和async的区别](https://segmentfault.com/q/1010000000640869)
