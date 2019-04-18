@@ -150,7 +150,7 @@ ajax请求默认会携带同源请求的cookie，而跨域请求则不会携带c
 - [defer和async的区别](https://segmentfault.com/q/1010000000640869)
 
 ## 4-18
-- nginx前端
+- nginx前端（参考：[前端想要了解的Nginx](https://juejin.im/post/5cae9de95188251ae2324ec3);[前端必备！最全nginx技术分析](https://mp.weixin.qq.com/s/wecUdGnuHdZOs3t7zc16jw)）
   - 基础：1.启动`start nginx`；2.快速停止或关闭`nginx -s stop`;3.正常停止关闭`nginx -s quit`;4.`nginx -t`看是否有错误;5.`nginx -s reload` 更新Nginx配置文件
   - 静态主机：
     - server 配置虚拟主机的相关参数，可以有多个
