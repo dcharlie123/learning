@@ -204,3 +204,6 @@ ajax请求默认会携带同源请求的cookie，而跨域请求则不会携带c
   }
   ```
   - 负载均衡
+  
+ 5.8
+ - 解决图片防盗链 [link](https://www.cnblogs.com/awzf/p/9811386.html)
