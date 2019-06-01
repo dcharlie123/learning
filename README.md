@@ -213,3 +213,25 @@ ajax请求默认会携带同源请求的cookie，而跨域请求则不会携带c
  
  ### 5.19
  - webpack4教程[link](https://godbmw.com/categories/webpack4%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/)
+ 
+ ### 6.1
+ - instanceof原理
+   
+  ```javascript
+  const instanceofMock=(L,R)=>{
+    if(typeOf L!=='object'){
+      return false;
+    }
+    while(true){
+      if(L===null){
+      // 已经遍历到了最顶端
+        return false;
+      }
+      if(R.prototype===L.__proto__){
+        return true;
+      }
+      L = L.__proto__;
+    }
+  }
+  ```
+ 
