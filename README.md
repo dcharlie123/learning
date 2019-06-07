@@ -234,4 +234,14 @@ ajax请求默认会携带同源请求的cookie，而跨域请求则不会携带c
     }
   }
   ```
+  
+  
+  ### 6.7
+  #### 原型链和继承
+  - [JavaScript 原型精髓 #一篇就够系列](https://juejin.im/post/5bcdb6c6f265da0afd4b75c0)
+  - [js原型链继承，借用构造函数继承,组合继承，寄生式继承，寄生组合继承](https://zhuanlan.zhihu.com/p/24964910?refer=muyichuanqi)
+  - 
+  
+  #### 大文件上传
+  - [前端大文件上传](https://juejin.im/post/5cf765275188257c6b51775f)
  
