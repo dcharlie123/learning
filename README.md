@@ -244,4 +244,32 @@ ajax请求默认会携带同源请求的cookie，而跨域请求则不会携带c
   
   #### 大文件上传
   - [前端大文件上传](https://juejin.im/post/5cf765275188257c6b51775f)
+  
+  
+  #### 7.6
+#### 面试题
+```javascript
+(function(x){
+  delete x;
+  return x;
+})(1)//1
+//考察
+x=1;
+delete x;//true
+x//Uncaught ReferenceError: y is not defined
+var y=2;
+delete y//false
+y//2
+```
+```javascript
+var name='VC';
+var foo={
+	name:"G",
+	bar:function(){
+		return this.name;
+	}
+}
+foo.bar.call(null)//VC
+//.call(null)非严格模式指向window
+```
  
