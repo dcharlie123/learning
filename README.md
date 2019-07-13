@@ -272,4 +272,15 @@ var foo={
 foo.bar.call(null)//VC
 //.call(null)非严格模式指向window
 ```
+### 7.13
+call模拟实现
+```
+Function.prototype.call2=function(content=window){
+	content.fn=this;
+	let args=[...arguments].slice(1);
+	let result=content.fn(...args);
+	delete content.fn;
+	return result;
+}
+```
  
