@@ -161,4 +161,8 @@ var foo={
 foo.bar.call(null)//VC
 //.call(null)非严格模式指向window
 ```
--内网穿透：https://juejin.im/post/5e97cb28f265da47e22f27a8
+- 内网穿透：https://juejin.im/post/5e97cb28f265da47e22f27a8
+### node路径知识记录：
+- `__dirname` 指向被执行的 js 所在文件夹的绝对路径
+- `__filename` 返回被执行的js文件的绝对路径
+- `process.cwd()` 指向运行 node 命令时所在的文件夹的绝对路径
