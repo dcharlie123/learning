@@ -167,4 +167,4 @@ foo.bar.call(null)//VC
 - `__filename` 返回被执行的js文件的绝对路径
 - `process.cwd()` 指向运行 node 命令时所在的文件夹的绝对路径
 
-### npx（https://www.ruanyifeng.com/blog/2019/02/npx.html）
+### npx（https://www.ruanyifeng.com/blog/2019/02/npx.html ）
