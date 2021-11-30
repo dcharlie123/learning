@@ -1,0 +1,19 @@
+.body{
+  width: 200px;
+  padding: 10px;
+}
+.btn{
+  margin:5px 0;
+  width: 100%;
+  height: 50px;
+  background: #f72f39;
+  border:none;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 4px;
+}
+.version{
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}

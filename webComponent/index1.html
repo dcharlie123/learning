@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    :root {
+      --background: black;
+      --text-color: yellow;
+    }
+  </style>
+  <hp-button id="btn1">珠峰按钮</hp-button>
+  <hp-button type="primary">
+    <input type="text">
+    按钮
+  </hp-button>
+  <h1>
+    <hp-button>珠峰按钮</hp-button>
+  </h1>
+  <p>
+    <hp-button>珠峰按钮</hp-button>
+  </p>
+  <template id="btn">
+    <button class="hp-button">
+      <slot></slot>
+    </button>
+  </template>
+  <script>
+    class HpButton extends HTMLElement {
+      constructor() {
+        super();
+        // let div=document.createElement('div')
+        let shadow = this.attachShadow({
+          mode: "open"
+        })
+        let btnTmpl = document.getElementById('btn');
+        let cloneTemplate = btnTmpl.content.cloneNode(true);
+        const style = document.createElement('style');
+        let type = this.getAttribute('type') || 'default'
+        const btnList={
+          'primary':{
+            background:'#ff0000',
+            color:'#fff'
+          },
+          'default':{
+            background:'#909399',
+            color:'#fff'
+          }
+        }
+        style.textContent=`
+              :host{
+                --color:#fff
+              }
+              :host-context(h1){
+                --color:orange
+              }
+              .hp-button{
+                outline:none;
+                border:none;
+                border-radius:4px;
+                padding:5px 20px;
+                display:inline-flex;
+                background:${btnList[type].background};
+                color:var(--color);
+                cursor:pointer;
+                
+              }
+        `
+        shadow.appendChild(style)
+        shadow.appendChild(cloneTemplate)
+      }
+    }
+    window.customElements.define('hp-button', HpButton)
+  </script>
+</body>
+<style>
+  #btn1{
+    --color:#f00
+  }
+</style>
+</html>

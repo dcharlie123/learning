@@ -1,0 +1,10 @@
+module.exports={
+  plugins:[
+    ['./babelPlugin/index.js',{
+      log:{
+        kind:"named",
+        require:"log4js"
+      }
+    }]
+  ]
+}
