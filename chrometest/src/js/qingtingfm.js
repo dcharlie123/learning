@@ -1,4 +1,6 @@
 !function () {
+  let key = "7a05a9c4054ca0f7e0a8527f07be95ef";
+  let replayCount = 0, TIME = 3;
   function getCookie(name) {
     let cookies = {};
     document.cookie.split(';').forEach(item => {
@@ -52,7 +54,7 @@
         withCredentials: true
       },
     })
-    .done((res) => {
+      .done((res) => {
         saveData(res, function () {
           if (index < (arr.length - 1)) {
             getData(arr, ++index)
@@ -66,15 +68,45 @@
           }
         })
       })
-    .fail((res) => {
-      console.log(`【${arr[index].title}】专辑数据抓取失败`)
-    })
+      .fail((res) => {
+        console.log(`【${arr[index].title}】专辑数据抓取失败`)
+      })
   }
   function saveData(arr, callback) {
-    console.log(arr)
-    setTimeout(() => {
-      callback()
-    }, 1000)
+    let data = arr.data.items.map(item => {
+      return {
+        playCount: item.play,
+        title: item.title,
+        finishRate: item.completion,
+        commentCount: item.comment
+      }
+    })
+    let postData = { from: '蜻蜓FM', data };
+    let sign = SparkMD5.hash(`${JSON.stringify(postData)}|${key}`).slice(16)
+    $.ajax({
+      url: `https://ndapp.test.oeeee.com/server.php?m=AudioFeedbackReceiver&a=stats&sign=${sign}`,
+      type: 'post',
+      contentType: "application/json", //必须这样写
+      dataType: "text",
+      data: JSON.stringify(postData)
+    })
+      .done(function (json) {
+        console.log(json)
+        console.log("数据上传成功")
+        callback()
+      })
+      .fail(function (json) {
+        console.log(json)
+        if (replayCount < TIME) {
+          replayCount++
+          console.log(`正在尝试第${replayCount}次数据上传`)
+          saveData(arr, callback)
+        } else {
+          replayCount = 0;
+          console.log("数据上传失败")
+          callback()
+        }
+      })
   }
   if (cookies['user_id']) {
     getChannel()

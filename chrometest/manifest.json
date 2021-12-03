@@ -1,10 +1,10 @@
 {
-  "name": "音频数据抓取123",
-  "version": "1.0",
+  "name": "音频数据抓取",
+  "version": "2.0",
   "description": "AUDIO-PLUGIN",
   "browser_action": {
     "default_icon": "/src/images/icon.png",
-    "default_title": "音频数据抓取123",
+    "default_title": "音频数据抓取",
     "default_popup": "index.html"   
   },
   "icons": {
@@ -15,16 +15,16 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://hybrid.ximalaya.com/data/pcindex/voice"],
-      "js": ["/src/js/jquery.js", "/src/js/xmly.js"]
+      "matches": ["https://hybrid.ximalaya.com/data/pcindex/voice","https://ndapp.test.oeeee.com/*"],
+      "js": ["/src/js/jquery.js", "/src/js/xmly.js","/src/js/md5.js"]
     },
     {
-      "matches": ["https://admin.qingting.fm/*"],
-      "js": ["/src/js/jquery.js", "/src/js/qingtingfm.js"]
+      "matches": ["https://admin.qingting.fm/*","https://ndapp.test.oeeee.com/*"],
+      "js": ["/src/js/jquery.js", "/src/js/qingtingfm.js","/src/js/md5.js"]
     }
   ],
   "permissions": [
-    "cookies", "tabs", "http://*/*", "https://*/*","declarativeContent","activeTab","<all_urls>"
+    "cookies", "tabs", "https://*/*","http://*/*","declarativeContent","activeTab","<all_urls>","https://ndapp.test.oeeee.com/*"
   ],
   "manifest_version": 2
 }
