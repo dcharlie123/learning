@@ -1,22 +1,11 @@
-# learning_resource
-整理一些在线的学习资源
-- js
-- css3
-- html5
-- R语言
-- PHP
-- Python
-- kotlin
-### 资源链接
+# learning
+整理一些学习资源
 - [http2讲解](https://ye11ow.gitbooks.io/http2-explained/content/)
+- [网络协议](http://www.52im.net/thread-1095-1-1.html)
+- 前端缓存：
+	- https://mp.weixin.qq.com/s/cUqkG3NETmJbglDXfSf0tg
+	- https://mp.weixin.qq.com/s/y-yajw1GaWLKUdOJo3cbew
 
-### 3-20
-http:http://www.52im.net/thread-1095-1-1.html
-
-### 3-21
-#### 前端缓存：
-https://mp.weixin.qq.com/s/cUqkG3NETmJbglDXfSf0tg
-https://mp.weixin.qq.com/s/y-yajw1GaWLKUdOJo3cbew
 按缓存位置分类:
 - Service Worker
 - Memory Cache
@@ -32,6 +21,8 @@ https://mp.weixin.qq.com/s/y-yajw1GaWLKUdOJo3cbew
 普通刷新 (F5)：因为 TAB 并没有关闭，因此 memory cache 是可用的，会被优先使用(如果匹配的话)。其次才是 disk cache。
 强制刷新 (Ctrl + F5)：浏览器不使用缓存，因此发送的请求头部均带有 Cache-control: no-cache(为了兼容，还带了 Pragma: no-cache)。服务器直接返回 200 和最新内容。
 5. 注意：no-cache并不意味着不缓存，而是使用缓存前必须请求服务端进行检查(或者说叫重新校验)。no-store告诉浏览器，根本不要缓存这个文件。同时，must-revalidate也不是说就『must-revalidate』，而是如果本地资源的缓存时间还没有超过设置的max-age的值，就可以直接使用本地资源，否则必须重新校验。
+
+
 ### 3-31
 - 对称布局：direction:ltr
   - ltr	默认。文本方向从左到右。
