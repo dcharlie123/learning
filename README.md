@@ -157,5 +157,9 @@ foo.bar.call(null)//VC
 - `__dirname` 指向被执行的 js 所在文件夹的绝对路径
 - `__filename` 返回被执行的js文件的绝对路径
 - `process.cwd()` 指向运行 node 命令时所在的文件夹的绝对路径
+- `path.resolve()` 指向运行 node 命令时所在的文件夹的绝对路径
+- `path.join()`返回'.'
+![image](https://user-images.githubusercontent.com/19767749/173730546-64b707ee-cbc8-4939-82f3-5996f6c1d995.png)
 
+[浅析 path 常用工具函数源码](https://mp.weixin.qq.com/s/1Bh48eic7TUt4uQZDR9-yQ)
 ### npx（https://www.ruanyifeng.com/blog/2019/02/npx.html ）
