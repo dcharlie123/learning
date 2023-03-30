@@ -133,7 +133,8 @@ ajax请求默认会携带同源请求的cookie，而跨域请求则不会携带c
   delete x;
   return x;
 })(1)//1
-//考察
+//考察:delete删除对象的某个属性https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete
+
 x=1;
 delete x;//true
 x//Uncaught ReferenceError: y is not defined
