@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./dist/vue.js"></script>
+</head>
+<body>
+<script>
+  let {reactive,effect,computed} = Vue
+  const obj = reactive({
+  aaa:1
+})
+// let tmp1, tmp2
+// outside嵌套了inside
+// effect(() => {
+  
+//   effect(() => {
+//     console.log('inside effect run')
+//     tmp2 = obj.bar
+//   })
+//   console.log('outside effect run')
+//   tmp1 = obj.foo
+// })
+// obj.foo = false
+const res= computed(()=>obj.aaa+1)
+console.log(res.value)
+obj.aaa++
+console.log(res.value)
+</script>
+</body>
+</html>

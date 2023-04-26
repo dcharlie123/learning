@@ -15,16 +15,16 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://hybrid.ximalaya.com/data/pcindex/voice","https://ndapp.test.oeeee.com/*"],
+      "matches": ["https://hybrid.ximalaya.com/data/pcindex/voice","https://ndapp.nandu.com/*"],
       "js": ["/src/js/jquery.js", "/src/js/xmly.js","/src/js/md5.js"]
     },
     {
-      "matches": ["https://admin.qingting.fm/*","https://ndapp.test.oeeee.com/*"],
+      "matches": ["https://admin.qingting.fm/*","https://ndapp.nandu.com/*"],
       "js": ["/src/js/jquery.js", "/src/js/qingtingfm.js","/src/js/md5.js"]
     }
   ],
   "permissions": [
-    "cookies", "tabs", "https://*/*","http://*/*","declarativeContent","activeTab","<all_urls>","https://ndapp.test.oeeee.com/*"
+    "cookies", "tabs", "https://*/*","http://*/*","declarativeContent","activeTab","<all_urls>","https://ndapp.nandu.com/*"
   ],
   "manifest_version": 2
 }

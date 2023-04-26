@@ -14,9 +14,9 @@
     let postData = { from: '喜马拉雅', data };
     let sign = SparkMD5.hash(`${JSON.stringify(postData)}|${key}`).slice(16)
     $.ajax({
-      url: `https://ndapp.test.oeeee.com/server.php?m=AudioFeedbackReceiver&a=stats&sign=${sign}`,
+      url: `https://ndapp.nandu.com/server.php?m=AudioFeedbackReceiver&a=stats&sign=${sign}`,
       type: 'post',
-      contentType: "application/json", //必须这样写
+      contentType: "application/json",
       dataType: "text",
       data: JSON.stringify(postData)
     })
