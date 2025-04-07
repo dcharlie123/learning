@@ -1,0 +1,48 @@
+{
+  "\u0000plugin-vue:export-helper": [
+  ],
+  "\u0000vite/modulepreload-polyfill": [
+  ],
+  "\u0000vite/preload-helper": [
+  ],
+  "index.html": [
+  ],
+  "node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js": [
+  ],
+  "node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js": [
+  ],
+  "node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js": [
+  ],
+  "node_modules/@vue/shared/dist/shared.esm-bundler.js": [
+  ],
+  "node_modules/vue-router/dist/vue-router.mjs": [
+  ],
+  "src/app.vue": [
+  ],
+  "src/app.vue?vue&type=style&index=0&scoped=98789c05&lang.css": [
+  ],
+  "src/entry-client.js": [
+  ],
+  "src/images/1.png": [
+    "/assets/Home-43ce2f0e.js",
+    "/assets/Home-cbfc04ae.css",
+    "/assets/1-6296c0a1.png"
+  ],
+  "src/main.js": [
+  ],
+  "src/router/index.js": [
+  ],
+  "src/views/About.vue": [
+    "/assets/About-258283d7.js"
+  ],
+  "src/views/Home.vue": [
+    "/assets/Home-43ce2f0e.js",
+    "/assets/Home-cbfc04ae.css",
+    "/assets/1-6296c0a1.png"
+  ],
+  "src/views/Home.vue?vue&type=style&index=0&scoped=ee137678&lang.scss": [
+    "/assets/Home-43ce2f0e.js",
+    "/assets/Home-cbfc04ae.css",
+    "/assets/1-6296c0a1.png"
+  ]
+}

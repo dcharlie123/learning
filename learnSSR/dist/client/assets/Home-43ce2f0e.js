@@ -1,0 +1,1 @@
+import{_ as t,o,c as n,a as s,F as _}from"./index-82e5e7d3.js";const a="/assets/1-6296c0a1.png";const r={};function l(c,e){return o(),n(_,null,[e[0]||(e[0]=s("img",{src:a,alt:""},null,-1)),e[1]||(e[1]=s("div",null,"Home",-1))],64)}const d=t(r,[["render",l],["__scopeId","data-v-ee137678"]]);export{d as default};
