@@ -20,13 +20,13 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "4.2",
+    "@vitejs/plugin-vue": "5.2",
     "cross-env": "^7.0.3",
     "express": "^4.21.2",
     "sass": "^1.86.2",
     "serve-static": "^2.2.0",
     "unplugin-auto-import": "^19.1.2",
-    "vite": "^4.5.11"
+    "vite": "^6.2.5"
   },
   "volta": {
     "node": "18.20.8"
