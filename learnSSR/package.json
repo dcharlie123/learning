@@ -22,7 +22,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "4.2",
     "cross-env": "^7.0.3",
-    "express": "^4.21.2",
+    "express": "^4.22.1",
     "sass": "^1.86.2",
     "serve-static": "^2.2.0",
     "unplugin-auto-import": "^19.1.2",
